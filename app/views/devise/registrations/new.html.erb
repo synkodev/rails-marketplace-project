@@ -19,6 +19,8 @@
     <%= f.input :birth_date,
                 required: true,
                 autofocus: true,
+                start_year: 1900,
+                end_year: Date.today.year,
                 input_html: { autocomplete: "birth_date" }%>
     <%= f.input :gender,
                 required: true,
