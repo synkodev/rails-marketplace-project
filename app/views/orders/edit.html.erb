@@ -1,0 +1,21 @@
+<h1>Editar Pedido</h1>
+
+
+<%= form_for @order, url: order_path(@order), method: :patch do |f| %>
+
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.hidden_field :user_id %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Salvar Alterações" %>
+    <%= link_to "Cancelar", order_path(@order) %>
+  </div>
+<% end %>
