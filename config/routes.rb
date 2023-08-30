@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  devise_for :users
-
+  resources :orders, only: [:index, :show, :edit]
   resources :products
 
+  devise_for :users
   root to: "products#index"
 end
