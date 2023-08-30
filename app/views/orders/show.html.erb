@@ -1,0 +1,10 @@
+
+<h1>Detalhes do Pedido</h1>
+
+<p><strong>ID do Pedido:</strong> <%= @order.id %></p>
+
+
+<%= link_to "Editar Pedido", edit_order_path(@order), class: "btn btn-primary" %>
+
+
+<%= link_to "Voltar para a lista de pedidos", orders_path %>

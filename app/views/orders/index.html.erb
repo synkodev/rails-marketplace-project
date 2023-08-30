@@ -1,0 +1,10 @@
+<h1>Pedidos</h1>
+
+<ul>
+  <% @orders.each do |order| %>
+    <li>
+       <%= link_to "Pedido: #{order.id}", order_path(order) %>
+
+    </li>
+  <% end %>
+</ul>
