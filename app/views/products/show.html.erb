@@ -1,0 +1,14 @@
+<div class="bg-primary pt-5 pb-5 rounded-5">
+  <div class="d-flex align-items-center justify-content-center">
+    <%= image_tag "placeholder.jpeg", width: 500, height: 400, crop: :fill %>
+    <ul>
+      <div class="description">
+        <h2><strong><%= @product.name %></strong></h2>
+        <h4>Descrição: <strong><%= @product.description %></strong></h4>
+        <h4>Categoria: <%= @product.category %></h4>
+        <h2><strong>R$: <%= @product.price %></strong></h2>
+       </div>
+      <%= link_to "Comprar", root_path, class:"btn btn-warning w-100 rounded-5"%>
+    </ul>
+  </div>
+</div>
