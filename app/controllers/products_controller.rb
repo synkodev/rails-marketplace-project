@@ -8,9 +8,9 @@ class ProductsController < ApplicationController
   # Caso contrário, ele exibe todos os produtos do modelo Product
   def index
     if current_user
-      @products = Products.all.where.not(user: current_user)
+      @products = Product.all.where.not(user: current_user)
     else
-      @products = Products.all
+      @products = Product.all
     end
   end
 
