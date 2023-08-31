@@ -1,10 +1,15 @@
 
-<h1>Detalhes do Pedido</h1>
+<h1>Detalhes do pedido</h1>
+<p>Nº pedido: <%= @order.id %></p>
 
-<p><strong>ID do Pedido:</strong> <%= @order.id %></p>
+<h2>Produtos no Carrinho:</h2>
 
+<ul>
+  <% @order.carts.each do |cart| %>
+    <li><%= cart.product.name %> - Quantity: <%= cart.quantity %></li>
+  <% end %>
+</ul>
 
-<%= link_to "Editar Pedido", edit_order_path(@order), class: "btn btn-primary" %>
-
-
-<%= link_to "Voltar para a lista de pedidos", orders_path %>
+<p>Valor Total: $<%= @order.total_price %></p>
+  <%= link_to "Editar Pedido", edit_order_path, class: "btn btn-primary" %>
+ <%= link_to "Voltar para lista de pedidos", orders_path, class: "btn btn-primary" %>

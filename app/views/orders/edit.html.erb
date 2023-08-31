@@ -12,10 +12,16 @@
     <%= f.label :user_id %>
     <%= f.hidden_field :user_id %>
   </div>
-
-
+  <br>
+<div class="actions">
+    <%= f.submit "Salvar Alterações", class: "btn btn-primary" %>
+  </div>
+  <br>
   <div class="actions">
-    <%= f.submit "Salvar Alterações" %>
-    <%= link_to "Cancelar", order_path(@order) %>
+    <%= link_to order_path(@order), class: "btn btn-primary" do %>
+      <i class="bi bi-arrow-left"></i> Voltar
+    <% end %>
+
+    <%= button_to "Excluir Pedido", order_path(@order), method: :delete, data: { confirm: "Tem certeza que deseja excluir este pedido?" }, class: "btn btn-danger" %>
   </div>
 <% end %>
