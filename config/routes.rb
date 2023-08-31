@@ -4,8 +4,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :orders, only: %i[index show create]
-  resources :products
+  resources :orders, only: [:index, :show, :edit, :create]
+  resources :products do
+    collection do
+      get "my_products"
+    end
+  end
 
   get 'cart/details', to: 'pages#cart_details', as: 'cart'
   get 'cart/empty', to: 'products#empty_cart', as: 'empty_cart'
