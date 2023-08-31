@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[show destroy] # adicionar para update e destroy depois
+  before_action :set_product, only: %i[show destroy edit update] # adicionar para update e destroy depois
   skip_before_action :authenticate_user!, only: %i[index show]
 
   ############### Métodos de READ ##################
@@ -38,12 +38,28 @@ class ProductsController < ApplicationController
     end
   end
 
+  def my_products
+    @products = Product.where(user: current_user)
+  end
+
   ############### Método de DELETE ################
 
   # Deletar o produto da base e redirecionar para [escolher path destino. Provisório: products#index]
   def destroy
     @product.destroy
-    redirect_to products_path, status: :see_other
+    redirect_to my_products_products_path, status: :see_other
+  end
+
+  ############### Método de EDIT ################
+
+  def edit
+  end
+
+  ############### Método de UPDATE ################
+
+  def update
+    @product.update(product_params)
+    redirect_to my_products_products_path, notice: 'Produto editado com sucesso'
   end
 
   private

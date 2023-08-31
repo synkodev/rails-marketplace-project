@@ -15,13 +15,13 @@
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
       <div class="container-fluid">
         <%= link_to "#", class: "navbar-brand" do %>
-          <i class="fa-solid fa-car-tunnel fa-2xl"></i>
+         <i>Bugi</i> <i class="fa-solid fa-gun fa-lg">gangs</i>
         <% end %>
 
     <%# --- Search --- %>
       <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
       <div class="search-form-control form-group">
-          <input class="form-control string required" type="text" name="search[query]" id="search_query" value="Pocure seu podruto aqui" />
+          <input class="form-control string required" type="text" name="search[query]" id="search_query" value="Pocure seu podutro aqui" />
           <button name="button" type="submit" class="btn btn-flat">
             <i class="fas fa-search"></i>
           </button>
@@ -39,8 +39,8 @@
               <li class="nav-item dropdown">
                 <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <%= link_to "Meus anuncios", "#", class: "dropdown-item" %>
-                  <%= link_to "Anunciar", "#", class: "dropdown-item" %>
+                  <%= link_to "Meus anuncios", my_products_products_path, class: "dropdown-item" %>
+                  <%= link_to "Anunciar", new_product_path, class: "dropdown-item" %>
                   <%# -- caminho logout -- %>
                   <%= link_to "Sair", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
                 </div>
