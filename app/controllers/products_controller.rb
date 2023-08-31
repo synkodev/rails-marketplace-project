@@ -54,7 +54,12 @@ class ProductsController < ApplicationController
 
   def remove_from_cart
     session[:cart].delete(@product.id)
-    redirect_back_or_to product_path(@product.id)
+    redirect_back_or_to request.referer
+  end
+
+  def empty_cart
+    session[:cart] = []
+    redirect_back_or_to request.referer
   end
 
   private

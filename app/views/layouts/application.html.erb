@@ -26,8 +26,13 @@
         </form>
         <%# Carrinho de compras %>
         <div class="cart">
-          <i class="fa-solid fa-cart-shopping fa-xl"></i>
-          <span class="cart-count"><%= @cart.count %></span>
+          <%= link_to cart_path do %>
+            <i class="fa-solid fa-cart-shopping fa-xl"></i>
+            <span class="cart-count"><%= @cart.count %></span>
+          <% end %>
+          <% if @cart.present? %>
+            <%= link_to 'Esvaziar', empty_cart_path, data: { turbo_confirm: 'Isso apagará todos os itens do carrinho! Deseja continuar?' } %>
+          <% end %>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
