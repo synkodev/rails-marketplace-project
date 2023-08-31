@@ -5,11 +5,22 @@
       <div class="description">
         <h2><strong><%= @product.name %></strong></h2>
         <h4>Descrição: <strong><%= @product.description %></strong></h4>
-        <h4>Categoria: <%= @product.category %></h4>
+        <h4>Catigoria: <%= @product.category %></h4>
         <h2><strong>R$: <%= @product.price %></strong></h2>
-       </div>
-      <%= link_to "Comprar", root_path, class:"btn btn-warning w-100 rounded-5"%>
+      </div>
+      <% if @cart.include?(@product) %>
+        <%= link_to "Adicionado",
+                      '#',
+                      class:"btn btn-success rounded-5 disabled" %>
+        <%= link_to   'Remover',
+                      remove_from_cart_path(@product),
+                      class:"btn btn-danger rounded-5",
+                      data: { turbo_method: :delete } %>
+      <% else %>
+        <%= button_to "Adicionar ao carrinho",
+                      add_to_cart_path(@product),
+                      class:"btn btn-warning w-100 rounded-5" %>
+      <% end %>
     </ul>
   </div>
 </div>
-
