@@ -1,0 +1,18 @@
+<h1>Detalhes do carrinho<%= " - #{pluralize @cart.count, 'produto'}" if @cart.present? %></h1>
+
+<% @cart.each_with_index do |product, index| %>
+  <p><%= "Produto #{index + 1}: #{product.name}" %></p>
+  <p><%= "Detalhes: #{product.description}" %></p>
+  <p><%= "Preço unitário: #{number_to_currency product.price, unit: 'R$ ', precision: 2, separator: ',', delimiter: '.'}" %></p>
+  <p><%= "Categoria: #{product.category}" %></p>
+  <p><%= "Vendido por: #{product.user.first_name} #{product.user.last_name}" %></p>
+  <%= link_to remove_from_cart_path(product), data: { turbo_method: :delete } do %>
+    <%= icon('fa-solid', 'trash-can') %>
+  <% end %>
+<% end %>
+
+<p>Total: </p>
+<% total = @cart.reduce(0) { |total, product| total + product.price } %>
+<p><%= number_to_currency total, unit: 'R$ ', precision: 2, separator: ',', delimiter: '.' %></p>
+
+<%= button_to 'Finalizar compra', orders_path, class: 'btn btn-primary' %>

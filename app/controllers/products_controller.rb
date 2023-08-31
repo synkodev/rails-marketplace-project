@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[show destroy] # adicionar para update e destroy depois
+  before_action :set_product, only: %i[show destroy add_to_cart remove_from_cart] # adicionar para update e destroy depois
   skip_before_action :authenticate_user!, only: %i[index show]
 
   ############### Métodos de READ ##################
@@ -44,6 +44,22 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     redirect_to products_path, status: :see_other
+  end
+
+  ############## Métodos do carrinho ###############
+  def add_to_cart
+    session[:cart] << @product.id
+    redirect_back_or_to product_path(@product.id)
+  end
+
+  def remove_from_cart
+    session[:cart].delete(@product.id)
+    redirect_back_or_to request.referer
+  end
+
+  def empty_cart
+    session[:cart] = []
+    redirect_back_or_to request.referer
   end
 
   private
