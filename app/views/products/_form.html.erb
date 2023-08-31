@@ -1,0 +1,8 @@
+ <%= simple_form_for(@product) do |f| %>
+      <%= f.input :name, label: "Nomi:" %>
+      <%= f.input :category, label: "Alegorila:" %>
+      <%= f.input :price, label: "Valô:" %>
+      <%= f.input :description, label: "Descrisau" %>
+      <%= f.input :photo, as: :file %>
+      <%= f.button :submit, request.fullpath == new_product_path ? "Adisonar" : "Muda" , class: 'btn btn-secondary mt-3' %>
+    <% end %>
