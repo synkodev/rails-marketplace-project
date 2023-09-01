@@ -1,0 +1,53 @@
+.empty-message {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-product {
+  overflow: hidden;
+  height: 200px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: start;
+  position: relative;
+  img {
+    height: 100%;
+    width: 160px;
+    object-fit: cover;
+  }
+  h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  p {
+    font-size: 16px;
+    line-height: 1.4;
+    opacity: .7;
+    margin-bottom: 0;
+    margin-top: 8px;
+  }
+  .card-product-infos {
+    padding: 16px;
+  }
+  .card-product-delete {
+    text-decoration: none;
+    color: rgba(145, 143, 143, 0.775);
+    font-size: 24px;
+    position: absolute;
+    top: 5px;
+    left: 812px;
+  }
+}
+
+.card-resume {
+  width: 400px;
+}
