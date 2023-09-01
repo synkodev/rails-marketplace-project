@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :products, dependent: :nullify
   has_many :carts, through: :orders
+  has_one_attached :photo
 
   before_validation :remove_special_characters
 
