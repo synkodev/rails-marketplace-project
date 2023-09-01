@@ -10,7 +10,7 @@
           <!-- Cada card -->
           <div class="card-product">
             <% if product.photo.attached? %>
-              <%= cl_image_tag product.photo.key, height: 160, width: 160, crop: :fill, class: "shadow p-3 mb-5 bg-white rounded" %>
+              <%= cl_image_tag product.photo.key, height: 160, width: 160, crop: :fill, class: "shadow p-3 bg-white rounded" %>
              <% else %>
             <%= image_tag "placeholder.jpg", width: 160, height: 160, crop: :fill %>
             <% end %>
