@@ -3,8 +3,8 @@
 <div class='row'>
 <h2 class='text-center mt-5'>Compar podutros</h2>
   <% @products.shuffle.each do |product| %>
-  <div class='col-sm-3'>
-    <div class="card border-2 shadow rounded my-3" style="width: 18rem;">
+  <div class='col-md-6 col-lg-3'>
+    <div class="card border-2 shadow rounded my-3" style="max-height: 100%, width: 18rem;">
         <%= image_tag 'product_placeholder.jpg',
                       alt: "#{product.name} vendido por #{product.user.first_name}",
                       class: 'card-img-top' %>

@@ -1,15 +1,18 @@
 <h1>Detalhes do pedido</h1> <br>
-<p>Nº pedido: <%= @order.id %></p>
 
-<h2>Produtos no Carrinho:</h2><br>
 
-<ul>
-  <% @order.carts.each do |cart| %>
-    <li><%= cart.product.name %> - Quantity: <%= cart.quantity %></li>
-  <% end %>
-</ul>
-<br>
-<p>Valor Total: <%= number_to_currency(@order.total_price, unit: 'R$', separator: ',', delimiter: '.', format: '%u %n') %></p>
-
- <br>
- <%= link_to "Voltar para lista de pedidos", orders_path, class: "btn btn-primary" %>
+<div class="card w-50">
+  <div class="card-body">
+    <h5 class="card-title">Nº pedido: <%= @order.id %></h5><br>
+    <h6 class="card-subtitle mb-2 text-muted">Produtos Comprados:</h6>
+    <ul class="list-group">
+      <% @order.carts.each do |cart| %>
+        <li class="list-group-item">
+          <%= cart.product.name %> - Qtde: <%= cart.quantity %> - <%= number_to_currency(cart.product.price, unit: 'R$', separator: ',', delimiter: '.', format: '%u %n') %>
+        </li>
+      <% end %>
+    </ul><br>
+    <p class="card-text mt-3"><strong>Valor Total: <%= number_to_currency(@order.total_price, unit: 'R$', separator: ',', delimiter: '.', format: '%u %n') %></strong></p>
+   <br> <a href="<%= orders_path %>" class="btn btn-primary">Voltar para lista de pedidos</a>
+  </div>
+</div>
