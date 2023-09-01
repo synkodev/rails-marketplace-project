@@ -1,59 +1,73 @@
-<h2>Registre-se</h2>
+<h2>Rezistre-se</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :first_name,
+                label: 'Nomi',
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "first_name" }%>
     <%= f.input :last_name,
+                label: 'Sobrenmoe',
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "last_name" }%>
     <%= f.input :personal_id,
+                label: 'CPf',
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "personal_id" }%>
     <%= f.input :birth_date,
+                label: 'Data do aniversario no ano q nasceu',
                 required: true,
                 autofocus: true,
                 start_year: 1900,
                 end_year: Date.today.year,
                 input_html: { autocomplete: "birth_date" }%>
     <%= f.input :gender,
+                label: 'Genro',
+                collection: ['Homen', 'Muhler', 'Otra coisa', 'Num sei'],
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "gender" }%>
     <%= f.input :phone_number,
+                label: 'Tefelone',
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "phone_number" }%>
     <%= f.input :address,
+                label: 'Onde ce mora',
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "address" }%>
     <%= f.input :email,
+                label: 'Emeio',
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
     <%= f.input :password,
+                label: 'Senha secreta',
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
+                label: 'Senha secreta de novo',
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :photo,
+                label: 'Foto bunita',
+                as: :file %>
     <%= f.input :terms_conditions,
+                label: 'Aseito vender minha alma em troca de serviso',
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "terms_conditions" }%>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Registrar", class: "btn btn-primary"%>
+    <%= f.button :submit, "Rezistro", class: "btn btn-primary"%>
   </div>
 <% end %>
 
