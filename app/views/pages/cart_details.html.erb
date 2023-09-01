@@ -1,33 +1,37 @@
 <h1 class="my-3">Detalhes do carrinho<%= " - #{pluralize @cart.count, 'produto'}" if @cart.present? %></h1>
 
 <% if @cart.present? %>
-  <!-- Conjunto de cards -->
-  <div class="d-flex flex-column gap-3">
-    <% @cart.each_with_index do |product, index| %>
-      <!-- Cada card -->
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-product-infos">
-          <h3><strong><%= "#{%w[Podruto Poruduto Potrudo].sample} #{index + 1}: " %></strong><%= "#{product.name}" %></h3>
-          <p><strong>Detalhes: </strong><%= "#{product.description}" %></p>
-          <p><strong>Preço unitário: </strong><%= "#{number_to_currency product.price, unit: 'R$ ', precision: 2, separator: ',', delimiter: '.'}" %></p>
-          <p><strong>Categoria: </strong><%= "#{product.category}" %></p>
-          <p><strong>Vendido por: </strong><%= "#{product.user.first_name} #{product.user.last_name}" %></p>
-          <%= link_to remove_from_cart_path(product), data: { turbo_method: :delete } do %>
-            <%= icon('fa-solid', 'trash-can') %>
-          <% end %>
-        </div>
+  <!-- Display flex pra deixar os dois lado a lado -->
+  <div class="d-flex justify-content-between gap-5 mb-5">
+    <!-- Conjunto de cards -->
+    <div class="flex-grow-1">
+      <div class="d-flex flex-column gap-3">
+        <% @cart.each_with_index do |product, index| %>
+          <!-- Cada card -->
+          <div class="card-product">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <div class="card-product-infos">
+              <h3><strong><%= "#{%w[Podruto Poruduto Potrudo].sample} #{index + 1}: " %></strong><%= "#{product.name}" %></h3>
+              <p><strong>Preço unitário: </strong><%= "#{number_to_currency product.price, unit: 'R$ ', precision: 2, separator: ',', delimiter: '.'}" %></p>
+              <p><strong>Categoria: </strong><%= "#{product.category}" %></p>
+              <p><strong>Vendido por: </strong><%= "#{product.user.first_name} #{product.user.last_name}" %></p>
+            </div>
+            <%= link_to remove_from_cart_path(product), class: 'card-product-delete', data: { turbo_method: :delete } do %>
+              <%= icon('fa-regular', 'square-minus') %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-  <!-- Total da compra e confirmação de compra -->
-  <div class="">
-    <p><strong>Total: </strong></p>
-    <% total = @cart.reduce(0) { |total, product| total + product.price } %>
-    <p><%= number_to_currency total, unit: 'R$ ', precision: 2, separator: ',', delimiter: '.' %></p>
-    <div class='d-flex gap-3'>
-      <%= button_to 'Finalizar compra', orders_path, class: 'btn btn-warning' %>
-      <%= link_to 'Esvaziar carrinho', empty_cart_path, class: 'btn btn-primary' %>
+    </div>
+    <!-- Total da compra e confirmação de compra -->
+    <div class="card-resume">
+      <p><strong>Total: </strong></p>
+      <% total = @cart.reduce(0) { |total, product| total + product.price } %>
+      <p><%= number_to_currency total, unit: 'R$ ', precision: 2, separator: ',', delimiter: '.' %></p>
+      <div class='d-flex gap-3'>
+        <%= button_to 'Finalizar compra', orders_path, class: 'btn btn-primary' %>
+        <%= link_to 'Esvaziar carrinho', empty_cart_path, class: 'btn btn-light' %>
+      </div>
     </div>
   </div>
 <% else %>

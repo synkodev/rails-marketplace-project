@@ -11,13 +11,13 @@
 .card-product {
   overflow: hidden;
   height: 200px;
-  width: 70%;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   gap: 12px;
   align-items: center;
   justify-content: start;
+  position: relative;
   img {
     height: 100%;
     width: 160px;
@@ -29,7 +29,7 @@
     margin: 0;
   }
   p {
-    font-size: 12px;
+    font-size: 16px;
     line-height: 1.4;
     opacity: .7;
     margin-bottom: 0;
@@ -38,4 +38,16 @@
   .card-product-infos {
     padding: 16px;
   }
+  .card-product-delete {
+    text-decoration: none;
+    color: rgba(145, 143, 143, 0.775);
+    font-size: 24px;
+    position: absolute;
+    top: 5px;
+    left: 812px;
+  }
+}
+
+.card-resume {
+  width: 400px;
 }
