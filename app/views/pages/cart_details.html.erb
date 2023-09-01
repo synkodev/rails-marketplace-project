@@ -9,7 +9,11 @@
         <% @cart.each_with_index do |product, index| %>
           <!-- Cada card -->
           <div class="card-product">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <% if product.photo.attached? %>
+              <%= cl_image_tag product.photo.key, height: 160, width: 160, crop: :fill, class: "shadow p-3 mb-5 bg-white rounded" %>
+             <% else %>
+            <%= image_tag "placeholder.jpg", width: 160, height: 160, crop: :fill %>
+            <% end %>
             <div class="card-product-infos">
               <h3><strong><%= "#{%w[Podruto Poruduto Potrudo].sample} #{index + 1}: " %></strong><%= "#{product.name}" %></h3>
               <p><strong>Preço unitário: </strong><%= "#{number_to_currency product.price, unit: 'R$ ', precision: 2, separator: ',', delimiter: '.'}" %></p>

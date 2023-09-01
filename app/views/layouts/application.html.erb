@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
   </head>
   <body>
     <%# --- Navbar --- %>
@@ -54,8 +55,8 @@
               </li>
             <% else %>
                 <%# Buttons login/sign-in %>
-                <%= link_to "Entrar", new_user_session_path, class: "btn btn-primary m-1 rounded-5" %>
-                <%= link_to "Anunciar", new_user_registration_path, class: "btn btn-warning m-1 rounded-5" %>
+                <%= link_to "Entar", new_user_session_path, class: "btn btn-primary m-1 rounded-5" %>
+                <%= link_to "Anuciar", new_user_registration_path, class: "btn btn-warning m-1 rounded-5" %>
             <% end %>
           </ul>
         </div>

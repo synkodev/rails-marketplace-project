@@ -1,7 +1,7 @@
 <%= render partial: 'banner' %>
 
 <div class='row'>
-<h2 class='text-center mt-5'>Comprar produtos</h2>
+<h2 class='text-center mt-5'>Compar podutros</h2>
   <% @products.shuffle.each do |product| %>
   <div class='col-md-6 col-lg-3'>
     <div class="card border-2 shadow rounded my-3" style="max-height: 100%, width: 18rem;">
@@ -15,10 +15,10 @@
                                    precision: 2,
                                    separator: ',',
                                    delimiter: '.' %></strong></p>
-          <p class='card-text'>Anunciado por: <%= product.user.first_name %></p>
+          <p class='card-text'>Anuciado por: <%= product.user.first_name %></p>
         </div>
         <%= link_to product_path(product), class: 'btn btn-primary' do %>
-          <%= icon('fa-solid', 'magnifying-glass')%> Ver produto
+          <%= icon('fa-solid', 'magnifying-glass')%> Bizoiá
         <% end %>
     </div>
   </div>
