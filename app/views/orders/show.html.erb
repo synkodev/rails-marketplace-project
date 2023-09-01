@@ -1,15 +1,18 @@
 <h1>Detalhes do pedido</h1> <br>
-<strong>Nº pedido: <%= @order.id %></strong><br>
-<br>
-<h2>Produtos no Carrinho:</h2><br>
+
+<p>Nº pedido: <%= @order.id %></p>
+
+<h2>Produtos Comprados:</h2><br>
 
 <ul>
   <% @order.carts.each do |cart| %>
-    <li><%= cart.product.name %> - Qtde: <%= cart.quantity %> - <%= number_to_currency(cart.product.price, unit: 'R$', separator: ',', delimiter: '.', format: '%u %n')%> </li>
+    <li><%= cart.product.name %> - Qtde: <%= cart.quantity %> - <%= number_to_currency(cart.product.price, unit: 'R$', separator: ',', delimiter: '.', format: '%u %n') %>  </li>
   <% end %>
 </ul>
 <br>
-<strong>Valor Total: <%= number_to_currency(@order.total_price, unit: 'R$', separator: ',', delimiter: '.', format: '%u %n') %></strong>
+<strong>Valor Total: <%= number_to_currency(@order.total_price, unit: 'R$', separator: ',', delimiter: '.', format: '%u %n') %></strong> <br>
+
+
  <br>
 <br>
 
