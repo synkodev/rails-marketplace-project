@@ -10,7 +10,7 @@
   </head>
   <body>
     <%# --- Navbar --- %>
-    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
       <div class="container-fluid">
         <%= link_to root_path, class: "navbar-brand" do %>
          <i>Bugi</i> <i class="fa-solid fa-gun fa-lg">gangs</i>
@@ -18,7 +18,7 @@
     <%# --- Search --- %>
       <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
       <div class="search-form-control form-group">
-          <input class="form-control string required" type="text" name="search[query]" id="search_query" value="Pocure seu podutro aqui" />
+          <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Pocure seu podutro aqui" />
           <button name="button" type="submit" class="btn btn-flat">
             <i class="fas fa-search"></i>
           </button>
@@ -27,11 +27,8 @@
         <%# Carrinho de compras %>
         <div class="cart">
           <%= link_to cart_path do %>
-            <i class="fa-solid fa-cart-shopping fa-xl"></i>
-            <span class="cart-count"><%= @cart.count %></span>
-          <% end %>
-          <% if @cart.present? %>
-            <%= link_to 'Esvaziar', empty_cart_path, data: { turbo_confirm: 'Isso apagará todos os itens do carrinho! Deseja continuar?' } %>
+                <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                <span id="cart-count"><%= @cart.count %></span>
           <% end %>
         </div>
         <%# Profile picture %>
