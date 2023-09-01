@@ -1,7 +1,7 @@
-<div class="bg-primary pt-5 pb-5 rounded-5">
+<div class="bg-light pt-5 pb-5 rounded-2 shadow p-3 mb-5 bg-white rounded">
   <div class="d-flex align-items-center justify-content-center">
     <% if @product.photo.attached? %>
-      <%= cl_image_tag @product.photo.key, height: 400, width: 500, crop: :fill %>
+      <%= cl_image_tag @product.photo.key, height: 400, width: 500, crop: :fill, class: "shadow p-3 mb-5 bg-white rounded" %>
       <% else %>
       <%= image_tag "placeholder.jpg", width: 500, height: 400, crop: :fill %>
       <% end %>
@@ -21,7 +21,7 @@
                       class:"btn btn-danger rounded-5",
                       data: { turbo_method: :delete } %>
       <% else %>
-        <%= button_to "Adicionar ao carrinho",
+        <%= button_to "Adiçonar nu carrin",
                       add_to_cart_path(@product),
                       class:"btn btn-warning w-100 rounded-5" %>
       <% end %>
