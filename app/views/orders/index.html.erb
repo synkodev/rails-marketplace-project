@@ -1,18 +1,24 @@
 <% @user_orders = current_user.orders %>
 
-
-<h1>Pedidos</h1>
+<h1>Compras realizadas</h1>
+<br>
 
 <% if @user_orders.any? %>
-  <ul>
+  <div class="row">
     <% @user_orders.each do |order| %>
-       <li>
-         <%= link_to "Pedido: #{order.id}", order_path(order) %>
-      </li>
+      <div class="col-md-4">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Pedido: <%= order.id %></h5>
+            <p class="card-text">Data da compra: <%= order.created_at.strftime("%d/%m/%Y") %></p>
+            <%= link_to "Ver Detalhes", order_path(order), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  </div>
 <% else %>
   <p>Não há pedidos neste momento.</p>
-
- <%= link_to "Voltar para a lista de produtos", root_path, class: "btn btn-primary" %>
 <% end %>
+
+<%= link_to "Voltar para a lista de produtos", root_path, class: "btn btn-primary" %>
