@@ -1,6 +1,6 @@
 <div class='row'>
 <h2 class='text-center'>Meu Podutros</h2>
-  <% @products.shuffle.each do |product| %>
+  <% @products.order(:created_at).each do |product| %>
   <div class='col-sm-3'>
     <div class="card my-3" style="width: 300px;">
         <% if product.photo.attached? %>
@@ -11,19 +11,24 @@
             class: 'card-img-top' %>
         <% end %>
         <div class="p-3">
-          <h5 class='card-title'><%= product.name %></h5>
+          <h5 class='card-title'><strong><%= product.name %></strong></h5>
           <p class='card-text' style='font-size: 12px'>na categoria <%= product.category %></p>
-          <p class='card-text'><%= number_to_currency product.price, unit: 'R$ ', precision: 2 %></p>
-          <p class='card-text'>Anunciado por: <%= product.user.first_name %><%= cl_image_tag current_user.photo.key, height: 15, width: 15, crop: :fill, class: "rounded-circle ms-2" %></p>
-        </div>
-        <div>
+          <p class='card-text'>Preço: <%= number_to_currency product.price, unit: 'R$ ', precision: 2, separator: ',', delimiter: '.' %></p>
+          <p class='card-text'>Anunciado por: <%= product.user.first_name %>
+          <% if current_user && current_user.photo.present? %>
+            <%= cl_image_tag current_user.photo.key, height: 24, width: 24, crop: :fill, class: "rounded-circle ms-2" %></p>
+          <% else %>
+            <%= image_tag 'profile-picture-placeholder.png', height: 24, width: 24, class: "rounded-circle ms-2" %>
+          <% end %>
           <div>
-            <%= link_to edit_product_path(product), class: 'btn btn-primary' do %>
-              <%= icon('fa-solid', 'magnifying-glass')%> Edita
-            <%end%>
-            <%= link_to product_path(product), class: 'btn btn-primary', data: { turbo_method: :delete } do %>
-              <%= icon('fa-solid', 'magnifying-glass')%> Deleta
-            <%end%>
+            <div class="d-flex justify-content-evenly">
+              <%= link_to edit_product_path(product), class: 'btn btn-primary' do %>
+                <%= icon('fa-solid', 'magnifying-glass')%> Edita
+              <%end%>
+              <%= link_to product_path(product), class: 'btn btn-primary', data: { turbo_method: :delete } do %>
+                <%= icon('fa-solid', 'magnifying-glass')%> Deleta
+              <%end%>
+            </div>
           </div>
         </div>
     </div>

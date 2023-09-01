@@ -6,25 +6,30 @@
       <%= image_tag "placeholder.jpg", width: 500, height: 400, crop: :fill %>
       <% end %>
     <ul>
-      <div class="description">
-        <h2><strong><%= @product.name %></strong></h2>
-        <h4>Descrição: <strong><%= @product.description %></strong></h4>
-        <h4>Catigoria: <%= @product.category %></h4>
-        <h2><strong>R$: <%= @product.price %></strong></h2>
+      <div>
+        <h2 class="mb-5"><strong><%= @product.name %></strong></h2>
+        <h4><strong>Descrição: </strong><%= @product.description %></h4>
+        <h4><strong>Catigoria: </strong><%= @product.category %></h4>
+        <h2><strong><%= number_to_currency @product.price, unit: 'R$ ',
+                                   precision: 2,
+                                   separator: ',',
+                                   delimiter: '.' %></strong></h2>
       </div>
-      <% if @cart.include?(@product) %>
-        <%= link_to "Adicionado",
-                      '#',
-                      class:"btn btn-success rounded-5 disabled" %>
-        <%= link_to   'Remover',
-                      remove_from_cart_path(@product),
-                      class:"btn btn-danger rounded-5",
-                      data: { turbo_method: :delete } %>
-      <% else %>
-        <%= button_to "Adiçonar nu carrin",
-                      add_to_cart_path(@product),
-                      class:"btn btn-warning w-100 rounded-5" %>
-      <% end %>
+      <div class="mt-5">
+        <% if @cart.include?(@product) %>
+          <%= link_to "Adicionado",
+                        '#',
+                        class:"btn btn-success rounded-5 disabled" %>
+          <%= link_to   'Remover',
+                        remove_from_cart_path(@product),
+                        class:"btn btn-danger rounded-5",
+                        data: { turbo_method: :delete } %>
+        <% else %>
+          <%= button_to "Adiçonar nu carrin",
+                        add_to_cart_path(@product),
+                        class:"btn btn-warning w-100 rounded-5" %>
+        <% end %>
+      </div>
     </ul>
   </div>
 </div>

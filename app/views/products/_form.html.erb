@@ -1,6 +1,6 @@
  <%= simple_form_for(@product) do |f| %>
       <%= f.input :name, label: "Nomi:" %>
-      <%= f.input :category, label: "Alegorila:" %>
+      <%= f.input :category, label: "Alegorila:", collection: Product::CATEGORIES %>
       <%= f.input :price, label: "Valô:" %>
       <%= f.input :description, label: "Descrisau" %>
       <%= f.input :photo, as: :file %>
